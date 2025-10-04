@@ -53,7 +53,6 @@ int main() {
     case 3:
       printf("The resulting sorted linked list is: ");
       printList(&linkedList);
-      removeAllItems(&linkedList);
       break;
     case 0:
       removeAllItems(&linkedList);
