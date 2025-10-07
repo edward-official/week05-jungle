@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define True 1
+#define False 0
 typedef struct _listnode {
   int item;
   struct _listnode *next;
@@ -61,25 +63,47 @@ int main() {
 
 void moveOddItemsToBack(LinkedList *linkedList) {
 	if(linkedList == NULL || linkedList->head == NULL) return;
-	ListNode *pLeft = NULL, *pTarget = linkedList->head, *rear = linkedList->head;
-	ListNode *updateLeft, *updateTarget;
-	while(rear->next) rear = rear->next;
-	for(int r=0; r<linkedList->size; r++) {
+	ListNode *pLeft = NULL;
+	ListNode *pTarget = linkedList->head;
+	ListNode *pTail = linkedList->head;
+	while(pTail->next) pTail = pTail->next;
+	ListNode *pLastTarget = pTail;
+	/*
+	if(target is even number) just update pLeft, pTarget
+	else if(target is odd number) {
+		SPECIAL CASE 1. if the target is last node
+			- no need to move the node since it's already at the end
+			- due to the loop condition, at each loop, the target node is visited for the first time
+			- it means that if the target is the last node, the target node is the only odd element in the entire list
+			- that also means that we don't have to do anything and just terminate the loop
+		SPECIAL CASE 2. if pLeft is null
+			- it means we have to update the header as well
+		GENERAL CASE. update pTarget, pTail (pLeft stays the same)
+			- pTail->next = pTarget
+			- pTarget = pTarget->next
+			- pTail->next = NULL
+			- pTail = pTarget
+	}
+	*/
+	int isLastNodeReached = False;
+	while(!isLastNodeReached) {
+		if(pTarget==pLastTarget) isLastNodeReached = True;
 		if(pTarget->item % 2 == 0) {
-			updateLeft = pTarget;
-			updateTarget = pTarget->next;
+			pLeft = pTarget;
+			pTarget = pTarget->next;
 		}
 		else {
-			updateLeft = pLeft;
-			updateTarget = pTarget->next;
-			rear->next = pTarget;
-			rear = rear->next;
-			rear->next = NULL;
+			if(pTarget->next == NULL) break;
+			else {
+				pTail->next = pTarget;
+				if(!pLeft) linkedList->head = pTarget->next;
+				else pLeft->next = pTarget->next;
+				pTarget->next = NULL;
+				pTail = pTarget; // update pTail
+				if(!pLeft) pTarget = linkedList->head; // update pTarget
+				else pTarget = pLeft->next; // update pTarget
+			}
 		}
-		pLeft = updateLeft;
-		pTarget = updateTarget;
-		if(pLeft) pLeft->next = pTarget;
-		else linkedList->head = pTarget;
 	}
 }
 void printList(LinkedList *ll) {
