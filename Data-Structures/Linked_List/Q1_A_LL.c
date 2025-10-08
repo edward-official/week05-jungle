@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #define True 1
 #define False 0
-
 typedef struct _listnode {
   int item;
   struct _listnode *next;
