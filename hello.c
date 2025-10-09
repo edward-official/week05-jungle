@@ -5,7 +5,15 @@ typedef struct _node {
   struct _node* next;
 } Node;
 
+void test1();
+void test2();
+
 void main() {
+  test2();
+  return;
+}
+
+void test1() {
   Node* node1 = malloc(sizeof(Node));
   Node* node2 = malloc(sizeof(Node));
   
@@ -18,6 +26,11 @@ void main() {
   
   free(node1);
   free(node2);
+  return;
+}
+void test2() {
+  int a = 4;
+  printf("%d\n", a /2);
   return;
 }
 
