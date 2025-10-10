@@ -77,6 +77,7 @@ int main() {
 
 
 int isStackPairwiseConsecutive(Stack *s) {
+  if(s->ll.size % 2 != 0) return False;
   ListNode* pTraverse = s->ll.head;
 	ListNode* pNextTraverse;
 	int difference;

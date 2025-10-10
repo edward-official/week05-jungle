@@ -88,9 +88,8 @@ void createStackFromLinkedList(LinkedList *ll, Stack *s) {
 	ListNode* pList = ll->head;
 	int index, value;
 	while(pList) {
-		index = s->ll.size;
 		value = pList->item;
-		insertNode(&(s->ll), index, value);
+		push(s, value);
 		pList = pList->next;
 	}
 }
