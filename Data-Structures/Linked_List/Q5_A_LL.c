@@ -81,7 +81,7 @@ int main() {
 
 
 void frontBackSplitLinkedList(LinkedList *linkedList, LinkedList *linkedList1, LinkedList *linkedList2) {
-  int size1 = linkedList->size / 2;
+  int size1 = (linkedList->size + 1) / 2;
 	int traversingIndex = 0;
 	ListNode* traversingPointer = linkedList->head;
 	ListNode* pTail1 = NULL;
