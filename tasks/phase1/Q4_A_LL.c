@@ -1,24 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define True 1
-#define False 0
-typedef struct _listnode {
-  int item;
-  struct _listnode *next;
-} ListNode;      // You should not change the definition of ListNode
-typedef struct _linkedlist {
-  int size;
-  ListNode *head;
-} LinkedList;    // You should not change the definition of LinkedList
-
-
-void moveEvenItemsToBack(LinkedList *linkedList);
-void printList(LinkedList *ll);
-void removeAllItems(LinkedList *ll);
-ListNode *findNode(LinkedList *ll, int index);
-int insertNode(LinkedList *ll, int index, int value);
-int removeNode(LinkedList *ll, int index);
-
+#include "HeaderLinkedList.h"
 
 int main() {
   LinkedList ll;
