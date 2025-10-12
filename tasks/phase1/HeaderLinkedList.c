@@ -1,7 +1,3 @@
-/*
-gcc tasks/phase1/Q2_A_LL.c tasks/phase1/HeaderLinkedList.c -o Q2_A_LL
-./Q2_A_LL
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "HeaderLinkedList.h"

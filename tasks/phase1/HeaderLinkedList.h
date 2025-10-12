@@ -1,7 +1,3 @@
-/*
-gcc tasks/phase1/Q1_A_LL.c tasks/phase1/HeaderLinkedList.c -o Q1_A_LL
-./Q1_A_LL
-*/
 #ifndef LinkedListHeader
 #define LinkedListHeader
 
