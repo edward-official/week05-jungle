@@ -5,11 +5,41 @@ typedef struct _node {
   struct _node* next;
 } Node;
 
+int fibonacci(int n) {
+  if(n <= 0) return -1;
+  else if(n == 1 || n == 2) return 1;
+  int *pFibonacciArray = malloc(sizeof(int) * (n + 1));
+  pFibonacciArray[1] = 1;
+  pFibonacciArray[2] = 1;
+  for(int index=3; index<=n; n++) pFibonacciArray[n] = pFibonacciArray[n-1] + pFibonacciArray[n-2];
+  return pFibonacciArray[n];
+}
+int q2() {
+  int *arr = (int*)malloc(5 * sizeof(int));
+  for(int index=0; index<5; index++) arr[index] = index * index;
+  printf("%d\n", arr[3]);
+  return 0;
+}
+int q3_updater(int *pArray, int nArray) {
+  for(int index=0; index<nArray; index++) pArray[index] += 1;
+}
+int q3_main() {
+  int pArray[5] = {1,2,3,4,5};
+  q3_updater(pArray, 5);
+  for(int t=0; t<5; t++) printf("%d\n", pArray[t]);
+  return 0;
+}
+
 void test1();
 void test2();
 
+#define N_ELEMENTS 5
 void main() {
-  test2();
+  // q3_main();
+  int sum = 0;
+  int elements[N_ELEMENTS] = {1,2,3,4,5};
+  for(int t=0; t<N_ELEMENTS; t++) sum += elements[t];
+  printf("%d\n", sum);
   return;
 }
 
